@@ -6,31 +6,41 @@ import themes from '../styles/themes';
 export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = usePersistState('@JStack:theme', 'dark')
+  // const [theme, setTheme] = usePersistState('@JStack:theme', 'dark')
+  const [theme, setTheme] = useState(localStorage.getItem('@JStack:theme') || 'dark');
 
-  function persistItem(key, value) {
-    return localStorage.setItem(key, value)
-  }
+  // function persistItem(key, value) {
+  //   return localStorage.setItem(key, value)
+  // }
 
-  function usePersistState(key, initialValue) {
-    const [state, setState] = useState(() => 
-      localStorage.getItem(key) || persistItem(key, initialValue)
-    );
+  // function usePersistState(key, initialValue) {
+  //   const [state, setState] = useState(() => 
+  //     localStorage.getItem(key) || persistItem(key, initialValue)
+  //   );
 
-    const setStateAndPersist = useCallback((newState) => {
-      setState(newState);
-      return persistItem(key, newState);
-    }, [key, setState]);
+  //   const setStateAndPersist = useCallback((newState) => {
+  //     setState(newState);
+  //     return persistItem(key, newState);
+  //   }, [key, setState]);
 
-    return [state, setStateAndPersist];
-  }
+  //   return [state, setStateAndPersist];
+  // }
 
   const currentTheme = useMemo(() => {
     return themes[theme] || themes.dark
   }, [theme]);
 
   function handleToggleTheme() {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    // setTheme(theme === 'dark' ? 'light' : 'dark');
+    setTheme((prevState) => {
+      if (prevState === 'dark') {
+        localStorage.setItem('@JStack:theme', 'light');
+        return 'light';
+      } else if (prevState === 'light') {
+        localStorage.setItem('@JStack:theme', 'dark');
+        return 'dark';
+      }
+    });
   }
 
   return (

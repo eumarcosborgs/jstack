@@ -5,6 +5,21 @@ import GlobalStyle from './styles/global';
 import Layout from './components/Layout';
 
 function App() {
+  // useLayoutEffect(() => {
+  //   // é disparado antes de renderizar o componente
+  // });
+
+  // const firstRender = useRef(false); 
+    // quando alterado o valor não atualiza o componente
+    
+  // useEffect(() => {
+  //   // trava a primeira renderização do componente
+  //   if (firstRender.current) {
+  //     firstRender.current = false;
+  //     return;
+  //   }
+  // });
+
   return (
     <AppProvider>
       <GlobalStyle /> 
