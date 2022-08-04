@@ -22,11 +22,17 @@ export class ThemeProvider extends React.Component {
     });
   }
 
+  // forceUpdate = () => {
+  //   this.forceUpdate();
+  // }
+
   render() {
     const { children } = this.props;
     const { theme } = this.state;
+    console.log('<App /> renderizou;')
 
     return (
+
       <ThemeContext.Provider 
         value={{
           selectedTheme: theme,
