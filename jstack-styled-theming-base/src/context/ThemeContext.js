@@ -6,17 +6,11 @@ import themes from '../styles/themes';
 export const ThemeContext = createContext();
 
 export class ThemeProvider extends React.Component {
-  constructor (props) {
-    super(props);
-
-    this.state = {
-      theme: localStorage.getItem('@JStack:theme') || 'dark'
-    }
-
-    this.handleToggleTheme = this.handleToggleTheme.bind(this);
+  state = {
+    theme: localStorage.getItem('@JStack:theme') || 'dark'
   }
 
-  handleToggleTheme() {
+  handleToggleTheme = () => {
     this.setState((prevState) => {
       if (prevState.theme === 'dark') {
         localStorage.setItem('@JStack:theme', 'light');
