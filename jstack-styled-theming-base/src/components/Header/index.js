@@ -3,18 +3,37 @@ import { ThemeContext } from '../../context/ThemeContext';
 
 import { Container } from './styles';
 
-export default function Header() {
-  const { selectedTheme, onToggleTheme }  = useContext(ThemeContext);
+export default class Header extends React.Component {
+  render() {
+    const { selectedTheme, onToggleTheme } = this.context
 
-  return (
-    <Container>
-      <h1>JStack's Blog</h1>
-      <button 
-        type="button"
-        onClick={onToggleTheme}
-      >
-        {selectedTheme === 'light' ? '🌚' : '🌞'}
-      </button>
-    </Container>
-  );
+    return (
+      <Container>
+        <h1>JStack's Blog</h1>
+        <button 
+          type="button"
+          onClick={onToggleTheme}
+        >
+          {selectedTheme === 'light' ? '🌚' : '🌞'}
+        </button>
+      </Container>
+    );
+  }
 }
+Header.contextType = ThemeContext
+
+// export default function Header() {
+//   const { selectedTheme, onToggleTheme }  = useContext(ThemeContext);
+
+//   return (
+//     <Container>
+//       <h1>JStack's Blog</h1>
+//       <button 
+//         type="button"
+//         onClick={onToggleTheme}
+//       >
+//         {selectedTheme === 'light' ? '🌚' : '🌞'}
+//       </button>
+//     </Container>
+//   );
+// }
