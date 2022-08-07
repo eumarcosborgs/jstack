@@ -4,6 +4,8 @@ import { ThemeContext } from '../../context/ThemeContext';
 import { Container } from './styles';
 
 export default class Header extends React.Component {
+  static contextType = ThemeContext;
+
   render() {
     const { selectedTheme, onToggleTheme } = this.context
 
@@ -20,7 +22,6 @@ export default class Header extends React.Component {
     );
   }
 }
-Header.contextType = ThemeContext
 
 // export default function Header() {
 //   const { selectedTheme, onToggleTheme }  = useContext(ThemeContext);

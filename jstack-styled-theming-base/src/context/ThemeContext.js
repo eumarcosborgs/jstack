@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useState, useMemo } from "react";
+import React, { createContext } from "react";
 import { ThemeProvider as StyledComponentThemeProvider} from 'styled-components';
 
 import themes from '../styles/themes';
@@ -29,7 +29,6 @@ export class ThemeProvider extends React.Component {
   render() {
     const { children } = this.props;
     const { theme } = this.state;
-    console.log('<App /> renderizou;')
 
     return (
 
